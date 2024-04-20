@@ -11,6 +11,13 @@ out vec4 frag_color;
 uniform int size = 32;
 uniform vec3 colors[2];
 
-void main(){
-    frag_color = vec4(colors[0], 1.0);
+void main() {
+    // Calculate the position of the fragment within the checkboard grid
+    ivec2 gridPosition = ivec2(gl_FragCoord.xy) / size;
+
+    // Calculate the color index based on the grid position
+    int colorIndex = (gridPosition.x + gridPosition.y) % 2;
+
+    // Set the fragment color based on the color index
+    frag_color = vec4(colors[colorIndex], 1.0);
 }
