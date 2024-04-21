@@ -16,10 +16,10 @@ uniform mat4 transform;
 
 void main(){
     //TODO: (Req 3) Change the next line to apply the transformation matrix
-    
+    gl_Position = transform * vec4(position, 1.0);
     // No need to change any of the following lines
-    vs_out.position = position;
+    vs_out.position=position;
     vs_out.color = color;
     vs_out.tex_coord = tex_coord;
-    vs_out.normal = normal;
+    vs_out.normal = normal; 
 }
