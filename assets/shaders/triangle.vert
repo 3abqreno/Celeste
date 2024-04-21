@@ -9,6 +9,17 @@ out Varyings {
     vec3 color;
 } vs_out;
 
+<<<<<<< HEAD
+// Currently, the triangle is always in the same position, but we don't want that.
+// So two uniforms should be added: translation (vec2) and scale (vec2).
+// Each vertex "v" should be transformed to be "scale * v + translation".
+// The default value for "translation" is (0.0, 0.0) and for "scale" is (1.0, 1.0).
+
+//TODO: (Req 1) Finish this shader
+
+void main(){
+}
+=======
 // Declare uniform variables for translation and scale
 uniform vec2 translation = vec2(0.0, 0.0);
 uniform vec2 scale = vec2(1.0, 1.0);
@@ -35,3 +46,4 @@ void main() {
     // Output vertex position and color
     gl_Position = vec4(vertex, 1.0);
 }
+>>>>>>> d5e7fd6c6bbf01183d6026238af8e508ea95a91c
