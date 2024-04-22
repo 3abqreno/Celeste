@@ -49,21 +49,18 @@ namespace our
     // This function should call the setup of its parent and
     // set the "alphaThreshold" uniform to the value in the member variable alphaThreshold
     // Then it should bind the texture and sampler to a texture unit and send the unit number to the uniform variable "tex"
-    void TexturedMaterial::setup() const
-    {
-        // TODO: (Req 7) Write this function
-        Material::setup();
-
-        // Set the "alphaThreshold" uniform in the shader
-        shader->set("alphaThreshold", alphaThreshold);
-        // Bind the texture to texture unit 0
-        glActiveTexture(GL_TEXTURE0);
+    void TexturedMaterial::setup() const {
+        //TODO: (Req 7) Write this function
+        TintedMaterial::setup();
+        shader->set("alphaThreshold",alphaThreshold);
+        if(texture != NULL && sampler !=NULL)
+        {
+        glActiveTexture(GL_TEXTURE0); 
         texture->bind();
-        // Bind the sampler to texture unit 0
-        sampler->bind(0); // Assuming you want to bind to texture unit 0
+        sampler->bind(0);
         shader->set("tex",0);
+        }
     }
-
     // This function read the material data from a json object
     void TexturedMaterial::deserialize(const nlohmann::json &data)
     {
