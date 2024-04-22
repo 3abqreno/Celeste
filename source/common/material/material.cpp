@@ -10,6 +10,8 @@ namespace our
     void Material::setup() const
     {
         // TODO: (Req 7) Write this function
+        pipelineState.setup();
+        shader->use();
     }
 
     // This function read the material data from a json object
@@ -31,6 +33,8 @@ namespace our
     void TintedMaterial::setup() const
     {
         // TODO: (Req 7) Write this function
+        Material::setup();
+        shader->set("tint", tint);
     }
 
     // This function read the material data from a json object
@@ -48,6 +52,16 @@ namespace our
     void TexturedMaterial::setup() const
     {
         // TODO: (Req 7) Write this function
+        Material::setup();
+
+        // Set the "alphaThreshold" uniform in the shader
+        shader->set("alphaThreshold", alphaThreshold);
+        // Bind the texture to texture unit 0
+        glActiveTexture(GL_TEXTURE0);
+        texture->bind();
+        // Bind the sampler to texture unit 0
+        sampler->bind(0); // Assuming you want to bind to texture unit 0
+        shader->set("tex",0);
     }
 
     // This function read the material data from a json object
