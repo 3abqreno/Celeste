@@ -72,18 +72,17 @@ namespace our
         float Top = orthoHeight / 2;
 
         // Defining an Orthographic Projection
-        if (cameraType == CameraType::ORTHOGRAPHIC){
+        if (cameraType == CameraType::ORTHOGRAPHIC)
+        {
             // The ortho() function typically takes four parameters: left, right, bottom, top.
-            // The ortho() function uses these parameters to create a 4x4 projection matrix that 
+            // The ortho() function uses these parameters to create a 4x4 projection matrix that
             // can be used to transform the coordinates of the 3D objects into 2D coordinates on the screen.
             glm::mat4 orthographic = glm::ortho(
-            Left,
-            Right,
-            Bottom,
-            Top
-            );
+                Left,
+                Right,
+                Bottom,
+                Top);
             return orthographic;
-
         }
         // Defining a Perspective Projection
         else
@@ -94,13 +93,13 @@ namespace our
             glm::mat4 projection = glm::perspective(
                 // The vertical field of view angle (smaller means more zoom in)
                 fovY,
-                //aspect ratio (width ÷ height of the window)
+                // aspect ratio (width ÷ height of the window)
                 aspectRatio,
-                //near plane relative to camera
+                // near plane relative to camera
                 near,
                 // far plane relative to camera
                 far);
-            return  projection;
+            return projection;
         }
     }
 }

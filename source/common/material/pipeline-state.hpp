@@ -42,6 +42,9 @@ namespace our
         glm::bvec4 colorMask = {true, true, true, true}; // To know how to use it, check glColorMask
         bool depthMask = true;                           // To know how to use it, check glDepthMask
 
+        // Add members for depthFunc and cullFace
+        GLenum depthFunc = GL_LESS; // Default depth function
+        GLenum cullFace = GL_BACK;
         // This function should set the OpenGL options to the values specified by this structure
         // For example, if faceCulling.enabled is true, you should call glEnable(GL_CULL_FACE), otherwise, you should call glDisable(GL_CULL_FACE)
         void setup() const
