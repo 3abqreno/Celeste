@@ -21,6 +21,9 @@ namespace our
         GLsizei elementCount;
 
     public:
+        std::vector<glm::vec3> vertices;
+        glm::vec3 min, max;
+
         // The constructor takes two vectors:
         // - vertices which contain the vertex data.
         // - elements which contain the indices of the vertices out of which each rectangle will be constructed.
@@ -58,8 +61,24 @@ namespace our
             glEnableVertexAttribArray(ATTRIB_LOC_TEXCOORD);
             glVertexAttribPointer(ATTRIB_LOC_NORMAL, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void *)offsetof(Vertex, normal));
             glEnableVertexAttribArray(ATTRIB_LOC_NORMAL);
-
             elementCount = elements.size();
+
+            // This initializes two vectors, min and max, to very large and very small values
+            this->min = glm::vec3(std::numeric_limits<float>::max());
+            this->max = glm::vec3(std::numeric_limits<float>::min());
+
+            // The minimum and maximum extents of the bounding box (min and max) are updated based on the coordinates of each vertex.
+            for (auto &vertex : vertices)
+            {
+                this->vertices.emplace_back(vertex.position);
+                this->min.x = std::min(this->min.x, vertex.position.x);
+                this->min.y = std::min(this->min.y, vertex.position.y);
+                this->min.z = std::min(this->min.z, vertex.position.z);
+                this->max.x = std::max(this->max.x, vertex.position.x);
+                this->max.y = std::max(this->max.y, vertex.position.y);
+                this->max.z = std::max(this->max.z, vertex.position.z);
+            }
+            // After this code executes, the min and max vectors will contain the minimum and maximum coordinates of the bounding box that encloses all the vertices.
         }
 
         // this function should render the mesh

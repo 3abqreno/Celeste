@@ -50,7 +50,7 @@ namespace our
             GLint location = glGetUniformLocation(program, name.c_str());
             if (location == -1)
             {
-                std::cerr << ("Uniform variable not found in shader program");
+                // std::cerr << ("Uniform variable not found in shader program");
             }
             return static_cast<GLuint>(location); // Casting from int to uint
         }

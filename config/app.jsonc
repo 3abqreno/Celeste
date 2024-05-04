@@ -140,6 +140,7 @@
                 ],
                 "children": [
                     {
+                        // "name":"cube",
                         "position": [1, -1, -1],
                         "rotation": [45, 45, 0],
                         "scale": [0.1, 0.1, 1.0],
@@ -169,6 +170,7 @@
                 ]
             },
             {
+                "name":"plane",
                 "position": [0, -1, 0],
                 "rotation": [-90, 0, 0],
                 "scale": [10, 10, 1],
@@ -181,6 +183,8 @@
                 ]
             },
             {
+                "name":"plane",
+
                 "position": [0, 1, 2],
                 "rotation": [0, 0, 0],
                 "scale": [2, 2, 2],
@@ -193,6 +197,8 @@
                 ]
             },
             {
+                "name":"plane",
+
                 "position": [0, 1, -2],
                 "rotation": [0, 0, 0],
                 "scale": [2, 2, 2],
@@ -205,6 +211,8 @@
                 ]
             },
             {
+                "name":"plane",
+
                 "position": [2, 1, 0],
                 "rotation": [0, 90, 0],
                 "scale": [2, 2, 2],
@@ -217,6 +225,8 @@
                 ]
             },
             {
+                "name":"plane",
+
                 "position": [-2, 1, 0],
                 "rotation": [0, 90, 0],
                 "scale": [2, 2, 2],
@@ -229,6 +239,7 @@
                 ]
             },
             {
+                "name":"plane",
                 "position": [0, 3, 0],
                 "rotation": [90, 0, 0],
                 "scale": [2, 2, 2],
@@ -241,11 +252,13 @@
                 ]
             },
             {
+                // "name":"moon",
                 "position": [0, 10, 0],
                 "rotation": [45, 45, 0],
                 "scale": [5, 5, 5],
                 "components": [
                     {
+                    
                         "type": "Mesh Renderer",
                         "mesh": "sphere",
                         "material": "moon"
