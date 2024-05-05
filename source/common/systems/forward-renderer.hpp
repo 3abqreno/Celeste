@@ -4,6 +4,8 @@
 #include "../components/camera.hpp"
 #include "../components/mesh-renderer.hpp"
 #include "../asset-loader.hpp"
+    
+#include <glm/glm.hpp>
 
 #include <glad/gl.h>
 #include <vector>

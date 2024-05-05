@@ -1,6 +1,8 @@
 #include "forward-renderer.hpp"
 #include "../mesh/mesh-utils.hpp"
 #include "../texture/texture-utils.hpp"
+#include "../components/light.hpp"
+#include "../deserialize-utils.hpp"
 
 namespace our
 {
@@ -116,6 +118,8 @@ namespace our
         CameraComponent *camera = nullptr;
         opaqueCommands.clear();
         transparentCommands.clear();
+        std::vector<LightComponent *> lights;
+
         for (auto entity : world->getEntities())
         {
             if (!camera)
@@ -135,6 +139,10 @@ namespace our
                 {
                     opaqueCommands.push_back(command);
                 }
+            }
+            if (auto lightComponent = entity->getComponent<LightComponent>(); lightComponent)
+            {
+                lights.push_back(lightComponent);
             }
         }
 
@@ -166,11 +174,37 @@ namespace our
         }
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        int lightsCount = 0;
+        for (int i = 0; i < lights.size(); i++)
+        {
+            if (lights[i]->visible)
+            {
+                lightsCount++;
+            }
+        }
 
         for (auto command : opaqueCommands)
         {
             command.material->setup();
             command.material->shader->set("transform", VP * command.localToWorld);
+
+            for (int j = 0, k = 0; j < (int)lights.size(); j++)
+            {
+                if (!(lights[j]->visible))
+                { // don't send this light if not visible
+                    continue;
+                }
+                // TODO 11 check if correct - assumption: default light direction is bottom
+                glm::vec3 position = lights[j]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+
+                // TODO 11 should this be normalized???? - assuming default is down
+                glm::vec4 directionVector = lights[j]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
+                glm::vec3 direction = glm::vec3(directionVector.x, directionVector.y, directionVector.z);
+
+                lights[j]->sendData(command.material->shader, k, direction, position); // k = index used by the shader
+                k++;
+            }
+
             command.mesh->draw();
         }
 
@@ -197,6 +231,23 @@ namespace our
         {
             command.material->setup();
             command.material->shader->set("transform", VP * command.localToWorld);
+            command.material->shader->set("light count", lightsCount);
+            for (int j = 0, k = 0; j < (int)lights.size(); j++)
+            {
+                if (!(lights[j]->visible))
+                {
+                    continue;
+                }
+                // TODO 11 check if correct - assumption: default light direction is bottom
+                glm::vec3 position = lights[j]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, 0, 0, 1);
+
+                // TODO 11 should this be normalized???? - assuming default is down
+                glm::vec4 directionVector = lights[j]->getOwner()->getLocalToWorldMatrix() * glm::vec4(0, -1, 0, 0);
+                glm::vec3 direction = glm::vec3(directionVector.x, directionVector.y, directionVector.z);
+
+                lights[j]->sendData(command.material->shader, k, direction, position);
+                k++;
+            }
             command.mesh->draw();
         }
 
