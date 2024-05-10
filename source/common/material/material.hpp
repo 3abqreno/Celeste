@@ -82,7 +82,7 @@ namespace our
         {
             return new TexturedMaterial();
         }
-        else if (type == "LitMaterial")
+        else if (type == "lit")
         {
             return new LitMaterial();
         }

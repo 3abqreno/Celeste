@@ -1,42 +1,39 @@
+
 #include "light.hpp"
-#include "../ecs/entity.hpp"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp> 
 #include "../deserialize-utils.hpp"
+#include "./component-deserializer.hpp"
+#include <glm/gtx/euler_angles.hpp>
+#include <iostream>
 
+namespace our
+{
+    // Deserializes the light data from a json object
+    void LightComponent::deserialize(const nlohmann::json &data)
+    {
+        if (!data.is_object())
+            return;
 
-namespace our {
-    // Reads light parameters from the given json object
-    void LightComponent::deserialize(const nlohmann::json& data){
-        if(!data.is_object()) return;
-        std::string lightTypeStr = data.value("lightType", "directional");
-        if(lightTypeStr == "spot"){
-            lightType = LightType::SPOT;
-        } else if(lightTypeStr=="point"){
-            lightType = LightType::POINT;   
-        } else {
-            lightType = LightType::DIRECTIONAL;
+        color = glm::vec3(data.value("color", glm::vec3(0, 0, 1)));
+        std::string typeStr = data.value("lighttype", "DIRECTIONAL");
+        if (typeStr == "DIRECTIONAL")
+            type = 0;
+
+        else if (typeStr == "POINT")
+            type = 1;
+
+        else if (typeStr == "SPOT")
+            type = 2;
+
+        if (type != 0)
+        {
+            attenuation = glm::vec3(data.value("attenuation", glm::vec3(1, 1, 1)));
         }
-        color = data.value("color", color);
-        cone_angles = data.value("cone_angles", cone_angles);
-        attenuation = data.value("attenuation", attenuation);
-    }
 
-    // send light data to the given shader
-    void LightComponent::sendData(ShaderProgram* shader, int lightIndex, glm::vec3 direction, glm::vec3 position){
-        std::string indexStr = std::to_string(lightIndex);
-        std::string uni = "lights[" + indexStr + "].";
-        
-        // Setting shader data
-        shader->set(uni + "type", int(lightType)); // === lights[i].type = int(lightType);
-        shader->set(uni + "position", position); // not used for directional light
-        shader->set(uni + "direction", direction);
-        shader->set(uni + "diffuse", color); // diffuse = specular = color
-        shader->set(uni + "specular", color); // diffuse = specular = color
-        shader->set(uni + "attenuation", attenuation); // not used for directional light
-        shader->set(uni + "cone_angles", glm::vec2(glm::radians(cone_angles.x), glm::radians(cone_angles.y))); // not used for directional, point light
-
-        
+        if (type == 2)
+        {
+            cone_angles.x = glm::radians((float)data.value("cone_angles.in", 10));
+            cone_angles.y = glm::radians((float)data.value("cone_angles.out", 80));
+        }
     }
 
 }

@@ -3,9 +3,8 @@
 #include "../ecs/world.hpp"
 #include "../components/camera.hpp"
 #include "../components/mesh-renderer.hpp"
+#include "../components/light.hpp"
 #include "../asset-loader.hpp"
-    
-#include <glm/glm.hpp>
 
 #include <glad/gl.h>
 #include <vector>
@@ -42,6 +41,11 @@ namespace our
         GLuint postprocessFrameBuffer, postProcessVertexArray;
         Texture2D *colorTarget, *depthTarget;
         TexturedMaterial* postprocessMaterial;
+        // Objects used to support lighting
+        std::vector<LightComponent*> lightSources;
+        glm::vec3 skyTop;
+        glm::vec3 skyMiddle;
+        glm::vec3 skyBottom;
     public:
         // Initialize the renderer including the sky and the Postprocessing objects.
         // windowSize is the width & height of the window (in pixels).

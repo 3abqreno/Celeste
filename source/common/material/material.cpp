@@ -74,33 +74,46 @@ namespace our
     }
     void LitMaterial::setup() const
     {
-        // setup parent
+        // should call the setup of its parent (TintedMaterial)
         Material::setup();
-
-        // send material data
         glActiveTexture(GL_TEXTURE0);
-        albedo->bind();
-        sampler->bind(0);
+        if (this->albedo && this->sampler)
+        {
+            albedo->bind();
+            sampler->bind(0);
+        }
         shader->set("material.albedo", 0);
 
         glActiveTexture(GL_TEXTURE1);
-        specular->bind();
-        sampler->bind(1);
+        if (this->specular && this->sampler)
+        {
+            specular->bind();
+            sampler->bind(1);
+        }
         shader->set("material.specular", 1);
 
         glActiveTexture(GL_TEXTURE2);
-        ambient_occlusion->bind();
-        sampler->bind(2);
-        shader->set("material.ambient_occlusion", 2);
+        if (this->roughness && this->sampler)
+        {
+            roughness->bind();
+            sampler->bind(2);
+        }
+        shader->set("material.roughness", 2);
 
         glActiveTexture(GL_TEXTURE3);
-        roughness->bind();
-        sampler->bind(3);
-        shader->set("material.roughness", 3);
+        if (this->ambient_occlusion && this->sampler)
+        {
+            ambient_occlusion->bind();
+            sampler->bind(3);
+        }
+        shader->set("material.ambient_occlusion", 3);
 
         glActiveTexture(GL_TEXTURE4);
-        emissive->bind();
-        sampler->bind(4);
+        if (this->emissive && this->sampler)
+        {
+            emissive->bind();
+            sampler->bind(4);
+        }
         shader->set("material.emissive", 4);
     }
     void LitMaterial::deserialize(const nlohmann::json &data)
