@@ -18,6 +18,7 @@ namespace our
         float jumpSensitivity = 1;
         float gravitySensitivity = 0.01f;
         float rotationSensitivity = 0.01f;
+        float boostSensitivity = 0.01f;
         // The ID of this component type is "Movement"
         static std::string getID() { return "Movement"; }
 

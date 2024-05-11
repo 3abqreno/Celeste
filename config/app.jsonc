@@ -1,31 +1,30 @@
 {
     "start-scene": "menu",
-    "window":
-    {
-        "title":"Default Game Window",
-        "size":{
-            "width":1280,
-            "height":720
+    "window": {
+        "title": "Default Game Window",
+        "size": {
+            "width": 1280,
+            "height": 720
         },
         "fullscreen": false
     },
     "scene": {
-        "renderer":{
+        "renderer": {
             "sky": "assets/textures/sky.jpg",
             "postprocess": "assets/shaders/postprocess/vignette.frag"
         },
-        "assets":{
-            "shaders":{
-                "tinted":{
-                    "vs":"assets/shaders/tinted.vert",
-                    "fs":"assets/shaders/tinted.frag"
+        "assets": {
+            "shaders": {
+                "tinted": {
+                    "vs": "assets/shaders/tinted.vert",
+                    "fs": "assets/shaders/tinted.frag"
                 },
-                "textured":{
-                    "vs":"assets/shaders/textured.vert",
-                    "fs":"assets/shaders/textured.frag"
+                "textured": {
+                    "vs": "assets/shaders/textured.vert",
+                    "fs": "assets/shaders/textured.frag"
                 }
             },
-            "textures":{
+            "textures": {
                 "moon": "assets/textures/moon.jpg",
                 "grass": "assets/textures/grass_ground_d.jpg",
                 "wood": "assets/textures/wood.jpg",
@@ -42,9 +41,9 @@
                 "sphere": "assets/models/sphere.obj",
                 "spikes": "assets/models/spikes.obj"
             },
-            "samplers":{
-                "default":{},
-                "pixelated":{
+            "samplers": {
+                "default": {},
+                "pixelated": {
                     "MAG_FILTER": "GL_NEAREST"
                 }
             },
@@ -190,7 +189,8 @@
                         "speed": 10,
                         "jumpSensitivity": 0.1,
                         "gravitySensitivity": 0.0025,
-                        "rotationSensitivity": 0.01
+                        "rotationSensitivity": 0.01,
+                        "boostSensitivity": 1.5
                     }
                 ],
                 "children": [{
@@ -205,16 +205,6 @@
                         }
                     ]
 
-                }, {
-                    // "name":"cube",
-                    "position": [1, -1, -1],
-                    "rotation": [45, 45, 0],
-                    "scale": [0.1, 0.1, 1.0],
-                    "components": [{
-                        "type": "Mesh Renderer",
-                        "mesh": "cube",
-                        "material": "metal"
-                    }]
                 }]
 
                 // {
@@ -230,9 +220,10 @@
                 // }, 
             },
             {
+                "name": "plane",
                 "position": [1, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -240,16 +231,59 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [1, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
                     "material": "ice"
                 }]
             },
+            {
+                "name": "moon0",
+                "position": [1, 1, 3],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.25, 0.25, 0.25],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "sphere",
+                    "material": "ice"
+                }]
+            }, {
+                "name": "moon1",
+                "position": [1, 2.5, 5],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.25, 0.25, 0.25],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "sphere",
+                    "material": "ice"
+                }]
+            }, {
+                "name": "moon2",
+                "position": [1, 4, 7],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.25, 0.25, 0.25],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "sphere",
+                    "material": "ice"
+                }]
+            },
 
+            {
+                "name": "plane",
+                "position": [1, 0.0, 7],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.65, 0.65, 0.65],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
             //   {
             //     "position": [1, -0.5, 1],
             //     "rotation": [0, -0.0, 0.0],
@@ -264,9 +298,10 @@
             //   },
 
             {
+                "name": "plane",
                 "position": [3, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -274,9 +309,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [3, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -284,9 +320,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [5, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -294,9 +331,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [7, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -304,9 +342,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [5, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -314,9 +353,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [9, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -324,9 +364,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [11, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -334,9 +375,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [11, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -344,9 +386,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [11, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -354,9 +397,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [9, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -364,9 +408,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [7, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -374,9 +419,10 @@
                 }]
             },
             {
+                "name": "plane",
                 "position": [13, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.5, 0.5, 0.5],
+                "scale": [0.65, 0.65, 0.65],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",

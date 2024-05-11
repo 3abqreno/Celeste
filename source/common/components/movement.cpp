@@ -13,5 +13,6 @@ namespace our
         jumpSensitivity = data.value("jumpSensitivity", jumpSensitivity);
         gravitySensitivity = data.value("gravitySensitivity", gravitySensitivity);
         rotationSensitivity = data.value("rotationSensitivity", rotationSensitivity);
+        boostSensitivity = data.value("boostSensitivity", boostSensitivity);
     }
 }

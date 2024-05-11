@@ -12,6 +12,8 @@ namespace our
         std::unordered_set<Entity *> entities;         // These are the entities held by this world
         std::unordered_set<Entity *> markedForRemoval; // These are the entities that are awaiting to be deleted
                                                        // when deleteMarkedEntities is called
+        int berries = 0;
+
     public:
         World() = default;
 
@@ -39,13 +41,14 @@ namespace our
         {
             return entities;
         }
-
+        int getBerries() { return berries; }
+        void addBerry() { berries++; }
         // This marks an entity for removal by adding it to the "markedForRemoval" set.
         // The elements in the "markedForRemoval" set will be removed and deleted when "deleteMarkedEntities" is called.
         void markForRemoval(Entity *entity)
         {
             // TODO: (Req 8) If the entity is in this world, add it to the "markedForRemoval" set.
-            if(entities.find(entity) != entities.end())
+            if (entities.find(entity) != entities.end())
                 // insert it to markedForRemoval
                 markedForRemoval.insert(entity);
             return;
@@ -68,6 +71,7 @@ namespace our
         // This deletes all entities in the world
         void clear()
         {
+            berries = 0;
             // TODO: (Req 8) Delete all the entites and make sure that the containers are empty
             for (auto entity : entities)
             {
