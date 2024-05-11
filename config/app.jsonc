@@ -1,49 +1,48 @@
 {
     "start-scene": "menu",
-    "window": {
-        "title": "Default Game Window",
-        "size": {
-            "width": 1280,
-            "height": 720
+    "window":
+    {
+        "title":"Default Game Window",
+        "size":{
+            "width":1280,
+            "height":720
         },
         "fullscreen": false
     },
     "scene": {
-        "renderer": {
+        "renderer":{
             "sky": "assets/textures/sky.jpg",
             "postprocess": "assets/shaders/postprocess/vignette.frag"
         },
-        "assets": {
-            "shaders": {
-                "tinted": {
-                    "vs": "assets/shaders/tinted.vert",
-                    "fs": "assets/shaders/tinted.frag"
+        "assets":{
+            "shaders":{
+                "tinted":{
+                    "vs":"assets/shaders/tinted.vert",
+                    "fs":"assets/shaders/tinted.frag"
                 },
-                "textured": {
-                    "vs": "assets/shaders/textured.vert",
-                    "fs": "assets/shaders/textured.frag"
-                },
-                "lit": {
-                    "vs": "assets/shaders/lit.vert",
-                    "fs": "assets/shaders/lit.frag"
+                "textured":{
+                    "vs":"assets/shaders/textured.vert",
+                    "fs":"assets/shaders/textured.frag"
                 }
             },
-            "textures": {
+            "textures":{
                 "moon": "assets/textures/moon.jpg",
                 "grass": "assets/textures/grass_ground_d.jpg",
                 "wood": "assets/textures/wood.jpg",
                 "glass": "assets/textures/glass-panels.png",
-                "monkey": "assets/textures/monkey.png"
+                "monkey": "assets/textures/monkey.png",
+                "spikes": "assets/textures/spikes.png"
             },
-            "meshes": {
+            "meshes":{
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
-                "sphere": "assets/models/sphere.obj"
+                "sphere": "assets/models/sphere.obj",
+                "spikes": "assets/models/spikes.obj"
             },
-            "samplers": {
-                "default": {},
-                "pixelated": {
+            "samplers":{
+                "default":{},
+                "pixelated":{
                     "MAG_FILTER": "GL_NEAREST"
                 }
             },
@@ -127,12 +126,28 @@
                     "tint": [1, 1, 1, 1],
                     "texture": "moon",
                     "sampler": "default"
+                },
+                "spikes": {
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling": {
+                            "enabled": false
+                        },
+                        "depthTesting": {
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "spikes",
+                    "sampler": "default"
                 }
             }
         },
         "world": [{
                 "position": [0, 0, -7.5],
                 "rotation": [0, 0, 0],
+                "scale": [0.15, 0.15, 0.15],
                 "components": [{
                         "type": "Mesh Renderer",
                         "mesh": "monkey",
@@ -141,15 +156,15 @@
                     {
                         "type": "Movement",
                         "speed": 10,
-                        "jumpSensitivity":0.5,
-                        "gravitySensitivity":0.01,
-                        "rotationSensitivity":0.01
+                        "jumpSensitivity": 0.1,
+                        "gravitySensitivity": 0.0025,
+                        "rotationSensitivity": 0.01
                     }
                 ],
                 "children": [{
                     "name": "camera",
                     "position": [0, 2, -5],
-                    "rotation":[0,180,0],
+                    "rotation": [0, 180, 0],
                     "components": [{
                             "type": "Camera"
                         },
@@ -169,12 +184,35 @@
                         "material": "metal"
                     }]
                 }]
+
+                // {
+                //     "name": "cube",
+                //     "position": [0, 5, 0],
+                //     "rotation": [0, 0, 0],
+                //     "scale": [5, 5, 5],
+                //     "components": [{
+                //         "type": "Mesh Renderer",
+                //         "mesh": "cube",
+                //         "material": "moon"
+                //     }]
+                // }, 
             },
             {
-                "name": "plane",
-                "position": [0, -1, 0],
-                "rotation": [-90, 0, 0],
-                "scale": [10, 10, 1],
+                "position": [
+                    -0.75,
+                    0.0,
+                    0
+                ],
+                "rotation": [
+                    90,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -182,18 +220,161 @@
                 }]
             },
             {
-                "name":"cube",
-                "position": [0, 5, 0],
-                "rotation": [0, 0, 0],
-                "scale": [5, 5, 5],
-                "components": [
-                    {
-                        "type": "Mesh Renderer",
-                        "mesh": "cube",
-                        "material": "moon"
-                    }
-                ]
+                "position": [
+                    0,
+                    -0.5,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "spikes"
+                }]
+            },
+            {
+                "position": [
+                    0.75,
+                    0.0,
+                    0
+                ],
+                "rotation": [
+                    90,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "grass"
+                }]
+            },
+            {
+                "position": [
+                    1.5,
+                    -0.5,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "spikes"
+                }]
+            },
+            {
+                "position": [
+                    2.25,
+                    0.0,
+                    0
+                ],
+                "rotation": [
+                    90,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "grass"
+                }]
+            },
+            {
+                "position": [
+                    3,
+                    -0.5,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "spikes"
+                }]
+            },
+            {
+                "position": [
+                    3.75,
+                    0.0,
+                    0
+                ],
+                "rotation": [
+                    90,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    0.5,
+                    0.5,
+                    0.5
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "grass"
+                }]
+            },
+            {
+                "position": [
+                    4.5,
+                    -0.5,
+                    0
+                ],
+                "rotation": [
+                    0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "spikes"
+                }]
             }
+
+
         ]
     }
 }
