@@ -14,9 +14,10 @@ namespace our
     class MovementComponent : public Component
     {
     public:
-        glm::vec3 linearVelocity = {0, 0, 0};  // Each frame, the entity should move as follows: position += linearVelocity * deltaTime
-        glm::vec3 angularVelocity = {0, 0, 0}; // Each frame, the entity should rotate as follows: rotation += angularVelocity * deltaTime
-
+        float speed = 1;
+        float jumpSensitivity = 1;
+        float gravitySensitivity = 0.01f;
+        float rotationSensitivity = 0.01f;
         // The ID of this component type is "Movement"
         static std::string getID() { return "Movement"; }
 

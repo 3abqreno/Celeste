@@ -1,0 +1,17 @@
+# CMake generation dependency list for this directory.
+C:/src/CMake/share/cmake-3.29/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/src/CMake/share/cmake-3.29/Modules/CMakeDependentOption.cmake
+C:/src/CMake/share/cmake-3.29/Modules/CMakePackageConfigHelpers.cmake
+C:/src/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake
+C:/src/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake
+C:/src/CMake/share/cmake-3.29/Modules/CheckLibraryExists.cmake
+C:/src/CMake/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake
+C:/src/CMake/share/cmake-3.29/Modules/FindPackageMessage.cmake
+C:/src/CMake/share/cmake-3.29/Modules/FindThreads.cmake
+C:/src/CMake/share/cmake-3.29/Modules/GNUInstallDirs.cmake
+C:/src/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake
+C:/src/CMake/share/cmake-3.29/Modules/WriteBasicConfigVersionFile.cmake
+E:/CUFE/3rdYear/2ndTerm/Graphics/Celeste/vendor/glfw/CMakeLists.txt
+E:/CUFE/3rdYear/2ndTerm/Graphics/Celeste/vendor/glfw/src/glfw3.pc.in
+E:/CUFE/3rdYear/2ndTerm/Graphics/Celeste/vendor/glfw/src/glfw3Config.cmake.in
+E:/CUFE/3rdYear/2ndTerm/Graphics/Celeste/vendor/glfw/src/glfw_config.h.in

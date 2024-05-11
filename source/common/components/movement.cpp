@@ -9,7 +9,9 @@ namespace our
     {
         if (!data.is_object())
             return;
-        linearVelocity = data.value("linearVelocity", linearVelocity);
-        angularVelocity = glm::radians(data.value("angularVelocity", angularVelocity));
+        speed = data.value("speed", speed);
+        jumpSensitivity = data.value("jumpSensitivity", jumpSensitivity);
+        gravitySensitivity = data.value("gravitySensitivity", gravitySensitivity);
+        rotationSensitivity = data.value("rotationSensitivity", rotationSensitivity);
     }
 }
