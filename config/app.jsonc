@@ -31,9 +31,11 @@
                 "wood": "assets/textures/wood.jpg",
                 "glass": "assets/textures/glass-panels.png",
                 "monkey": "assets/textures/monkey.png",
-                "spikes": "assets/textures/spikes.png"
+                "spikes": "assets/textures/spikes.png",
+                "ice": "assets/textures/ice.jpg",
+                "ice_spikes": "assets/textures/ice_spikes.jpg"
             },
-            "meshes":{
+            "meshes": {
                 "cube": "assets/models/cube.obj",
                 "monkey": "assets/models/monkey.obj",
                 "plane": "assets/models/plane.obj",
@@ -141,11 +143,41 @@
                     "tint": [1, 1, 1, 1],
                     "texture": "spikes",
                     "sampler": "default"
+                },
+                "ice": {
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling": {
+                            "enabled": false
+                        },
+                        "depthTesting": {
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "ice",
+                    "sampler": "default"
+                },
+                "ice_spikes": {
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling": {
+                            "enabled": false
+                        },
+                        "depthTesting": {
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "ice",
+                    "sampler": "default"
                 }
             }
         },
         "world": [{
-                "position": [0, 0, -7.5],
+                "position": [1, 0, 0],
                 "rotation": [0, 0, 0],
                 "scale": [0.15, 0.15, 0.15],
                 "components": [{
@@ -198,183 +230,314 @@
                 // }, 
             },
             {
-                "position": [
-                    -0.75,
-                    0.0,
-                    0
-                ],
-                "rotation": [
-                    90,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    0.5,
-                    0.5,
-                    0.5
-                ],
+                "position": [1, 0.0, 0],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
-                    "material": "grass"
+                    "material": "ice"
                 }]
             },
             {
-                "position": [
-                    0,
-                    -0.5,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ],
-                "components": [{
-                    "type": "Mesh Renderer",
-                    "mesh": "spikes",
-                    "material": "spikes"
-                }]
-            },
-            {
-                "position": [
-                    0.75,
-                    0.0,
-                    0
-                ],
-                "rotation": [
-                    90,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    0.5,
-                    0.5,
-                    0.5
-                ],
+                "position": [1, 0.0, 2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
-                    "material": "grass"
+                    "material": "ice"
                 }]
             },
+
+            //   {
+            //     "position": [1, -0.5, 1],
+            //     "rotation": [0, -0.0, 0.0],
+            //     "scale": [1.0, 1.0, 1.0],
+            //     "components": [
+            //       {
+            //         "type": "Mesh Renderer",
+            //         "mesh": "spikes",
+            //         "material": "ice_spikes"
+            //       }
+            //     ]
+            //   },
+
             {
-                "position": [
-                    1.5,
-                    -0.5,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ],
-                "components": [{
-                    "type": "Mesh Renderer",
-                    "mesh": "spikes",
-                    "material": "spikes"
-                }]
-            },
-            {
-                "position": [
-                    2.25,
-                    0.0,
-                    0
-                ],
-                "rotation": [
-                    90,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    0.5,
-                    0.5,
-                    0.5
-                ],
+                "position": [3, 0.0, 0],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
-                    "material": "grass"
+                    "material": "ice"
                 }]
             },
             {
-                "position": [
-                    3,
-                    -0.5,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ],
-                "components": [{
-                    "type": "Mesh Renderer",
-                    "mesh": "spikes",
-                    "material": "spikes"
-                }]
-            },
-            {
-                "position": [
-                    3.75,
-                    0.0,
-                    0
-                ],
-                "rotation": [
-                    90,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    0.5,
-                    0.5,
-                    0.5
-                ],
+                "position": [3, 0.0, -2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
-                    "material": "grass"
+                    "material": "ice"
                 }]
             },
             {
-                "position": [
-                    4.5,
-                    -0.5,
-                    0
-                ],
-                "rotation": [
-                    0,
-                    -0.0,
-                    0.0
-                ],
-                "scale": [
-                    1.0,
-                    1.0,
-                    1.0
-                ],
+                "position": [5, 0.0, 0],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [7, 0.0, 0],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [5, 0.0, 2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [9, 0.0, 2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [11, 0.0, 2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [11, 0.0, 0],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [11, 0.0, -2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [9, 0.0, -2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [7, 0.0, -2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "position": [13, 0.0, -2],
+                "rotation": [90, -0.0, 0.0],
+                "scale": [0.5, 0.5, 0.5],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "plane",
+                    "material": "ice"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [2, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "spikes",
-                    "material": "spikes"
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [4, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [6, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [8, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [8, -0.5, -2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [10, -0.5, 2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [10, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [10, -0.5, -2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+
+            {
+                "name": "spikes",
+                "position": [12, -0.5, 2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [13, -0.5, 2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [12, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [12, -0.5, -2],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [13, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
+                }]
+            },
+            {
+                "name": "spikes",
+                "position": [9, -0.5, 0],
+                "rotation": [0, -0.0, 0.0],
+                "scale": [1.0, 1.0, 1.0],
+                "components": [{
+                    "type": "Mesh Renderer",
+                    "mesh": "spikes",
+                    "material": "ice_spikes"
                 }]
             }
-
-
         ]
     }
 }
