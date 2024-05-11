@@ -16,6 +16,8 @@ namespace our
             Entity *entity = add();
             entity->parent = parent;
             entity->deserialize(entityData);
+            if (entity->name[0] == 'm')
+                allBerries++;
             if (entityData.contains("children"))
             {
                 // TODO: (Req 8) Recursively call this world's "deserialize" using the children data

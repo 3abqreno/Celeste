@@ -223,7 +223,7 @@
                 "name": "plane",
                 "position": [1, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -234,7 +234,7 @@
                 "name": "plane",
                 "position": [1, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -277,7 +277,7 @@
                 "name": "plane",
                 "position": [1, 0.0, 7],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -301,7 +301,7 @@
                 "name": "plane",
                 "position": [3, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -323,7 +323,7 @@
                 "name": "plane",
                 "position": [3, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -345,7 +345,7 @@
                 "name": "plane",
                 "position": [5, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -367,7 +367,7 @@
                 "name": "plane",
                 "position": [7, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -389,7 +389,7 @@
                 "name": "plane",
                 "position": [5, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -411,7 +411,7 @@
                 "name": "plane",
                 "position": [9, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -433,7 +433,7 @@
                 "name": "plane",
                 "position": [11, 0.0, 2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -444,7 +444,7 @@
                 "name": "plane",
                 "position": [11, 0.0, 0],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -466,7 +466,7 @@
                 "name": "plane",
                 "position": [11, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -488,7 +488,7 @@
                 "name": "plane",
                 "position": [9, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -510,7 +510,7 @@
                 "name": "plane",
                 "position": [7, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",
@@ -532,7 +532,7 @@
                 "name": "plane",
                 "position": [13, 0.0, -2],
                 "rotation": [90, -0.0, 0.0],
-                "scale": [0.65, 0.65, 0.65],
+                "scale": [0.8, 0.8, 0.8],
                 "components": [{
                     "type": "Mesh Renderer",
                     "mesh": "plane",

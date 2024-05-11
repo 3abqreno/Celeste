@@ -11,6 +11,30 @@
 // This state shows how to use the ECS framework and deserialization.
 class Playstate : public our::State
 {
+    void updateGUI()
+    {
+        ImGuiWindowFlags window_flags = 0;
+        window_flags |= ImGuiWindowFlags_NoTitleBar;
+        window_flags |= ImGuiWindowFlags_NoBackground;
+        window_flags |= ImGuiWindowFlags_NoScrollbar;
+        window_flags |= ImGuiWindowFlags_NoMove;
+        window_flags |= ImGuiWindowFlags_NoResize;
+        ImGui::NewFrame();
+        bool *open_ptr = (bool *)true;
+        if (ImGui::Begin("Player", open_ptr, window_flags))
+        {
+            ImGui::SetWindowSize(ImVec2((float)550, (float)200));
+            ImGui::SetWindowPos(ImVec2(getApp()->getWindowSize().x - 200.0f, 0.0f));
+
+            std::string score_and_level =
+                "berries: " + std::to_string(world.getBerries()) +
+                "\\" + std::to_string(world.getAllBerries());
+            ;
+            ImGui::TextUnformatted(score_and_level.c_str());
+            ImGui::End();
+            ImGui::Render();
+        }
+    }
 
     our::World world;
     our::ForwardRenderer renderer;
@@ -46,7 +70,7 @@ class Playstate : public our::State
         cameraController.update(&world, (float)deltaTime);
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
-
+        updateGUI();
         // Get a reference to the keyboard object
         auto &keyboard = getApp()->getKeyboard();
 
