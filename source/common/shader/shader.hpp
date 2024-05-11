@@ -48,10 +48,10 @@ namespace our
             // TODO: (Req 1) Return the location of the uniform with the given name
 
             GLint location = glGetUniformLocation(program, name.c_str());
-            if (location == -1)
-            {
-                std::cerr << ("Uniform variable not found in shader program");
-            }
+            // if (location == -1)
+            // {
+            //     std::cerr << ("Uniform variable not found in shader program");
+            // }
             return static_cast<GLuint>(location); // Casting from int to uint
         }
         void set(const std::string &uniform, GLfloat value)
