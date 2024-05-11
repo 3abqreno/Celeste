@@ -89,6 +89,8 @@ namespace our
                 glm::vec2 delta = app->getMouse().getMouseDelta();
                 // camera->localTransform.rotation.x -= delta.y * 0.01; // The y-axis controls the pitch
                 entity->localTransform.rotation.y -= delta.x * movement->rotationSensitivity; // The y-axis controls the pitch
+                if (world->isDead())
+                    return;
                 // cerr << gravity << ' ' << camera->localTransform.position.y << '\n';
                 // entity->localTransform.rotation.y = camera->localTransform.rotation.y+glm::pi<float>(); // The x-axis controls the yaw
                 // camera->localTransform.position += front * acceleration;
@@ -188,7 +190,11 @@ namespace our
                     if (!colidePlane)
                     {
                         cout << "No PLane" << '\n';
-                        app->changeState("menu");
+                        world->killUser();
+                        entity->localTransform.rotation.z = 90;
+                        renderer->setPostprocessing(true);
+                        // app->changeState("menu");
+
                         // break;
                     }
                 }

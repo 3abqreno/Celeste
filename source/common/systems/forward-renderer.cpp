@@ -93,6 +93,7 @@ namespace our
 
     void ForwardRenderer::destroy()
     {
+        applyPostprocesssing = false;
         if (skyMaterial)
         {
             delete skySphere;
@@ -168,7 +169,7 @@ namespace our
         glColorMask(true, true, true, true);
         glDepthMask(true);
 
-        if (postprocessMaterial)
+        if (postprocessMaterial && applyPostprocesssing)
         {
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, postprocessFrameBuffer);
         }
@@ -251,7 +252,7 @@ namespace our
             command.mesh->draw();
         }
 
-        if (postprocessMaterial)
+        if (postprocessMaterial && applyPostprocesssing)
         {
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
             postprocessMaterial->setup();
@@ -259,4 +260,9 @@ namespace our
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
     }
+    void ForwardRenderer::setPostprocessing(bool apply)
+    {
+        applyPostprocesssing = apply;
+    }
+
 }

@@ -14,6 +14,7 @@ namespace our
                                                        // when deleteMarkedEntities is called
         int berries = 0;
         int allBerries = 0;
+        bool dead = false;
 
     public:
         World() = default;
@@ -73,6 +74,7 @@ namespace our
         // This deletes all entities in the world
         void clear()
         {
+            dead = 0;
             berries = 0, allBerries = 0;
             // TODO: (Req 8) Delete all the entites and make sure that the containers are empty
             for (auto entity : entities)
@@ -81,8 +83,16 @@ namespace our
             }
             entities.clear();
             markedForRemoval.clear();
+            
         }
-
+        void killUser()
+        {
+            dead = 1;
+        }
+        bool isDead()
+        {
+            return dead;
+        }
         // Since the world owns all of its entities, they should be deleted alongside it.
         ~World()
         {
