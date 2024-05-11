@@ -1,6 +1,6 @@
 #include "mesh-renderer.hpp"
 #include "../asset-loader.hpp"
-
+#include <iostream>
 namespace our
 {
     // Receives the mesh & material from the AssetLoader by the names given in the json object
@@ -17,5 +17,6 @@ namespace our
         mesh = AssetLoader<Mesh>::get(data["mesh"].get<std::string>());
         // Get the material from the AssetLoader by "material" name
         material = AssetLoader<Material>::get(data["material"].get<std::string>());
+        // scale = data.value("scale", scale);
     }
 }

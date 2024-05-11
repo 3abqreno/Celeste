@@ -24,6 +24,8 @@ namespace our
         Application *app; // The application in which the state runs
         float gravity = 0;
         bool hasJump = 0;
+        bool floor = 1;
+        bool collision = 1;
 
     public:
         void enter(Application *app)
@@ -77,7 +79,7 @@ namespace our
                     accelerationFront *= 2, accelerationSide *= 2;
 
                 if (app->getKeyboard().isPressed(GLFW_KEY_SPACE) && (entity->localTransform.position.y == 0.5 || hasJump))
-                    gravity += movement->jumpSensitivity * (1 + hasJump * movement->boostSensitivity), hasJump = 0;
+                    gravity = movement->jumpSensitivity * (!hasJump) + hasJump * movement->boostSensitivity, hasJump = 0;
                 // front[0]=0;
 
                 front[1] = 0;
@@ -133,7 +135,7 @@ namespace our
                 // cerr << "checking" << '\n';
                 int cnt = 0;
                 bool colidePlane = 0, colideSpike = 0;
-                if (fabs(entity->localTransform.position.y - 0.5f) < 0.1 && app->getKeyboard().isPressed(GLFW_KEY_Q))
+                if (fabs(entity->localTransform.position.y - 0.5f) < 0.1 && (app->getKeyboard().isPressed(GLFW_KEY_Q) || floor))
                 {
 
                     for (auto entity2 : world->getEntities())
@@ -182,22 +184,24 @@ namespace our
                             }
                         }
                     }
+
                     if (!colidePlane)
                     {
                         cout << "No PLane" << '\n';
-                        // app->changeState("menu");
+                        app->changeState("menu");
                         // break;
                     }
                 }
 
                 // collision detection with objects
-                if (app->getKeyboard().isPressed(GLFW_KEY_E))
+                if (app->getKeyboard().isPressed(GLFW_KEY_E) || collision)
                     for (auto object : world->getEntities())
                     {
                         int berries = world->getBerries();
                         if (object->name != ("moon" + to_string(berries)))
                             continue;
                         MeshRendererComponent *objectMeshRender = object->getComponent<MeshRendererComponent>();
+
                         // cout << "size is" << MeshRender->mesh->vertices.size() << '\n';
                         glm::mat4 objectLocalToWorldMat = object->getLocalToWorldMatrix();
                         float objectMinX = 1e9, objectMaxX = -1e9;
@@ -238,6 +242,8 @@ namespace our
                             cout << "collision with moon babyyy\n", world->markForRemoval(object), world->deleteMarkedEntities(), world->addBerry();
                             for (auto newBerry : world->getEntities())
                             {
+                                MeshRendererComponent *berryMeshRender = newBerry->getComponent<MeshRendererComponent>();
+
                                 if (newBerry->name != ("moon" + to_string(berries + 1)))
                                     continue;
                                 newBerry->localTransform.scale = glm::vec3(0.25, 0.25, 0.25);
